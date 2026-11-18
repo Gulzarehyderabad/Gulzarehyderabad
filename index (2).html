@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gulzar-e-Hyderabad Florists & Royal Event Decor | Toli Chowki & Global NRI Orders</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0f3d2e;
+      --primary-light: #185a44;
+      --gold: #d4af37;
+      --gold-light: #f3e5ab;
+      --cream: #faf8f5;
+      --text-dark: #1f2421;
+      --text-muted: #5c6660;
+      --white: #ffffff;
+      --whatsapp: #25D366;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--cream);
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+
+    h1, h2, h3, .brand-font { font-family: 'Cinzel', serif; }
+
+    /* Top Promo Banner */
+    .top-bar {
+      background: var(--primary);
+      color: var(--gold-light);
+      text-align: center;
+      padding: 8px 16px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+    }
+
+    /* Sticky Navbar */
+    header {
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+      padding: 14px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .logo-wrap { display: flex; align-items: center; gap: 10px; }
+    .logo-icon { font-size: 1.8rem; }
+    .logo-title { font-size: 1.25rem; font-weight: 700; color: var(--primary); line-height: 1.2; }
+    .logo-sub { font-size: 0.75rem; color: var(--text-muted); font-family: 'Plus Jakarta Sans', sans-serif; }
+
+    .nav-actions { display: flex; gap: 10px; align-items: center; }
+
+    .btn {
+      padding: 10px 18px;
+      border-radius: 50px;
+      border: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+    }
+    .btn-primary { background: var(--primary); color: var(--white); }
+    .btn-primary:hover { background: var(--primary-light); transform: translateY(-2px); }
+    .btn-gold { background: var(--gold); color: var(--primary); }
+    .btn-gold:hover { background: #c5a028; transform: translateY(-2px); }
+    .btn-whatsapp { background: var(--whatsapp); color: var(--white); }
+    .btn-whatsapp:hover { background: #1ebe5d; transform: translateY(-2px); }
+    .btn-outline { background: transparent; border: 1.5px solid var(--primary); color: var(--primary); }
+    .btn-outline:hover { background: var(--primary); color: var(--white); }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(rgba(15, 61, 46, 0.8), rgba(15, 61, 46, 0.88)),
+                  url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+      color: var(--white);
+      padding: 85px 5%;
+      text-align: center;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(212, 175, 55, 0.22);
+      border: 1px solid var(--gold);
+      color: var(--gold-light);
+      padding: 6px 16px;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      margin-bottom: 18px;
+    }
+    .hero h1 { font-size: clamp(2rem, 4vw, 3.2rem); margin-bottom: 16px; color: var(--white); }
+    .hero p { max-width: 750px; margin: 0 auto 28px; font-size: 1.05rem; color: #e5ece8; }
+    .hero-buttons { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+
+    /* Highlights Strip */
+    .highlights {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      padding: 36px 5%;
+      background: var(--white);
+      border-bottom: 1px solid #eae6df;
+    }
+    .highlight-card {
+      text-align: center;
+      padding: 18px;
+      border-radius: 14px;
+      background: var(--cream);
+      border: 1px solid rgba(212, 175, 55, 0.25);
+    }
+    .highlight-card span { font-size: 1.8rem; display: block; margin-bottom: 6px; }
+    .highlight-card h4 { color: var(--primary); margin-bottom: 4px; font-size: 1rem; }
+    .highlight-card p { font-size: 0.85rem; color: var(--text-muted); }
+
+    /* Section Container */
+    .section { padding: 60px 5%; max-width: 1320px; margin: 0 auto; }
+    .section-header { text-align: center; margin-bottom: 36px; }
+    .section-header h2 { font-size: 2rem; color: var(--primary); margin-bottom: 8px; }
+    .section-header p { color: var(--text-muted); max-width: 650px; margin: 0 auto; }
+
+    /* NRI Banner */
+    .nri-card {
+      background: linear-gradient(135deg, #fdfbf7 0%, #f5eedc 100%);
+      border: 1.5px solid var(--gold);
+      border-radius: 18px;
+      padding: 28px 32px;
+      margin-bottom: 44px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .nri-card h3 { color: var(--primary); font-size: 1.35rem; margin-bottom: 6px; }
+    .nri-card p { color: var(--text-dark); font-size: 0.92rem; max-width: 720px; }
+
+    /* Category Filter Tabs */
+    .filter-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 32px;
+    }
+    .tab-btn {
+      padding: 8px 18px;
+      border-radius: 50px;
+      border: 1px solid #d5cfc4;
+      background: var(--white);
+      color: var(--text-dark);
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.88rem;
+      transition: 0.2s;
+    }
+    .tab-btn.active, .tab-btn:hover {
+      background: var(--primary);
+      color: var(--white);
+      border-color: var(--primary);
+    }
+
+    /* Product Cards Grid */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 26px;
+    }
+    .product-card {
+      background: var(--white);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(15, 61, 46, 0.06);
+      border: 1px solid #eee9e0;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .product-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 14px 32px rgba(15, 61, 46, 0.12);
+    }
+    .product-img-wrap {
+      position: relative;
+      height: 230px;
+      overflow: hidden;
+      background: #e9e4dc;
+    }
+    .product-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    .product-card:hover .product-img-wrap img { transform: scale(1.06); }
+    .category-tag {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: rgba(15, 61, 46, 0.88);
+      color: var(--gold-light);
+      padding: 4px 12px;
+      border-radius: 50px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+    .product-body {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+    .product-body h3 { font-size: 1.15rem; color: var(--primary); margin-bottom: 6px; font-family: 'Plus Jakarta Sans', sans-serif; }
+    .product-body p { font-size: 0.88rem; color: var(--text-muted); margin-bottom: 16px; flex-grow: 1; }
+    .product-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 12px;
+      border-top: 1px solid #f0ece4;
+    }
+    .price { font-size: 1.15rem; font-weight: 700; color: var(--primary); }
+    .price small { font-size: 0.75rem; color: var(--text-muted); font-weight: 400; }
+
+    /* Quote Banner */
+    .quote-banner {
+      background: linear-gradient(135deg, var(--primary) 0%, #1b5e47 100%);
+      color: var(--white);
+      border-radius: 20px;
+      padding: 44px 32px;
+      text-align: center;
+      margin: 48px auto 0;
+      border: 1px solid var(--gold);
+    }
+    .quote-banner h3 { font-size: 1.8rem; color: var(--gold-light); margin-bottom: 12px; }
+    .quote-banner p { max-width: 650px; margin: 0 auto 24px; color: #e5ece8; }
+
+    /* Coverage Areas */
+    .zones-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .zone-pill {
+      background: #e8f5e9;
+      border: 1px solid #a5d6a7;
+      padding: 8px 16px;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      color: #1b5e20;
+      font-weight: 600;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--primary);
+      color: #d8e2dc;
+      padding: 48px 5% 28px;
+      text-align: center;
+    }
+    footer h3 { color: var(--gold-light); margin-bottom: 10px; }
+    footer p { font-size: 0.9rem; margin-bottom: 8px; }
+
+    /* Floating WhatsApp Button */
+    .floating-wa {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--whatsapp);
+      color: var(--white);
+      padding: 14px 22px;
+      border-radius: 50px;
+      font-weight: 700;
+      box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4);
+      z-index: 99;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.2s;
+    }
+    .floating-wa:hover { transform: scale(1.05); }
+
+    /* Modals */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.65);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 200;
+      padding: 16px;
+    }
+    .modal-backdrop.open { display: flex; }
+    .modal-box {
+      background: var(--white);
+      border-radius: 18px;
+      width: 100%;
+      max-width: 540px;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 28px;
+      position: relative;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+    }
+    .modal-close {
+      position: absolute;
+      top: 18px;
+      right: 20px;
+      background: none;
+      border: none;
+      font-size: 1.6rem;
+      cursor: pointer;
+      color: var(--text-muted);
+    }
+    .modal-box h3 { color: var(--primary); margin-bottom: 6px; font-size: 1.4rem; }
+    .modal-sub { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 18px; }
+
+    .form-group { margin-bottom: 14px; }
+    .form-group label { display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 5px; color: var(--text-dark); }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%;
+      padding: 10px 14px;
+      border-radius: 10px;
+      border: 1px solid #ccc5b9;
+      font-family: inherit;
+      font-size: 0.92rem;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+    .nri-box {
+      background: #f6f9f7;
+      border: 1px dashed var(--primary);
+      padding: 12px;
+      border-radius: 10px;
+      margin-bottom: 14px;
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px solid #eee;
+      font-size: 0.9rem;
+    }
+    .cart-summary {
+      background: var(--cream);
+      padding: 14px;
+      border-radius: 12px;
+      margin: 14px 0;
+      font-size: 0.92rem;
+    }
+    .cart-summary div { display: flex; justify-content: space-between; margin-bottom: 4px; }
+    .cart-total { font-weight: 700; font-size: 1.05rem; color: var(--primary); border-top: 1px solid #dcd5c9; padding-top: 6px; margin-top: 6px; }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar">
+    🌍 Order from Anywhere in the World (USA, UK, UAE, Saudi, Canada & More) &nbsp;|&nbsp; 🚚 100% FREE Delivery Across All Hyderabad &nbsp;|&nbsp; 📞 +91 8712229700
+  </div>
+
+  <header>
+    <div class="logo-wrap">
+      <span class="logo-icon">🌺</span>
+      <div>
+        <div class="logo-title brand-font">Gulzar-e-Hyderabad</div>
+        <div class="logo-sub">Toli Chowki Florists & Royal Event Decor</div>
+      </div>
+    </div>
+    <div class="nav-actions">
+      <button class="btn btn-outline" onclick="openModal('quoteModal')">📋 Get Quote</button>
+      <button class="btn btn-primary" onclick="openModal('cartModal')">🛒 Cart (<span id="cartCount">0</span>)</button>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-badge">🌍 International NRI Gifting & All-Hyderabad Free Delivery</div>
+    <h1>Send Royal Flowers & Grand Decor to Hyderabad From Anywhere</h1>
+    <p>Living in the USA, UK, UAE, Saudi Arabia, or anywhere abroad? Surprise your loved ones or book complete Nikah, Sanchak, Manja & Walima decor in Hyderabad with <strong>FREE delivery across the entire city</strong>.</p>
+    <div class="hero-buttons">
+      <a href="#catalog" class="btn btn-gold">🛍 Shop Flowers & Decor</a>
+      <button class="btn btn-outline" style="color:#fff; border-color:#fff;" onclick="openModal('quoteModal')">✉️ Email Custom Quote</button>
+      <a href="https://wa.me/918712229700?text=Assalamu%20Alaikum%20Gulzar-e-Hyderabad!%20I%20would%20like%20to%20place%20an%20order%20for%20delivery%20in%20Hyderabad." target="_blank" class="btn btn-whatsapp">💬 WhatsApp +91 8712229700</a>
+    </div>
+  </section>
+
+  <section class="highlights">
+    <div class="highlight-card">
+      <span>🌍</span>
+      <h4>Order From Outside India</h4>
+      <p>Easy booking for NRIs in USA, UK, Gulf, Europe & Australia</p>
+    </div>
+    <div class="highlight-card">
+      <span>🆓</span>
+      <h4>FREE Hyderabad Delivery</h4>
+      <p>₹0 delivery fee across all Hyderabad colonies & halls</p>
+    </div>
+    <div class="highlight-card">
+      <span>🌹</span>
+      <h4>100% Farm-Fresh Blooms</h4>
+      <p>Garlands, Bouquets, Bridal Gajras & Royal Stages</p>
+    </div>
+    <div class="highlight-card">
+      <span>📸</span>
+      <h4>Photo Confirmation</h4>
+      <p>Live WhatsApp photo updates before & after delivery</p>
+    </div>
+  </section>
+
+  <section class="section" id="catalog">
+    <div class="nri-card">
+      <div>
+        <h3>🌍 Sending Flowers or Booking Decor From Outside India?</h3>
+        <p>Select <strong>"Ordering From Outside India (NRI)"</strong> during checkout or quote request. Enter your international WhatsApp number and your recipient's Hyderabad address—we handle everything with <strong>FREE delivery anywhere in Hyderabad</strong>.</p>
+      </div>
+      <button class="btn btn-primary" onclick="openNriOrder()">🌍 Start International Order</button>
+    </div>
+
+    <div class="section-header">
+      <h2>Explore Fresh Flowers & Event Decor</h2>
+      <p>Handcrafted wedding garlands, fresh bouquets, bridal flower headwear, and royal stage setups with free Hyderabad delivery.</p>
+    </div>
+
+    <div class="filter-tabs">
+      <button class="tab-btn active" onclick="filterProducts('all', this)">All Collections</button>
+      <button class="tab-btn" onclick="filterProducts('garlands', this)">🌺 Garlands & Varmalas</button>
+      <button class="tab-btn" onclick="filterProducts('bouquets', this)">💐 Fresh Bouquets</button>
+      <button class="tab-btn" onclick="filterProducts('headwear', this)">👑 Flower Headwear</button>
+      <button class="tab-btn" onclick="filterProducts('decor', this)">✨ Stage & Event Decor</button>
+    </div>
+
+    <div class="product-grid" id="productGrid"></div>
+
+    <div class="quote-banner">
+      <h3>Planning a Marriage, Sanchak, Manja or Walima From India or Abroad?</h3>
+      <p>Share your event date, Hyderabad venue, and decor preferences. Your quote request goes directly to our Toli Chowki studio email (<strong>qmohiuddin13@hotmail.com</strong>).</p>
+      <button class="btn btn-gold" onclick="openModal('quoteModal')">📋 Request Custom Event Quote</button>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 0;">
+    <div class="section-header">
+      <h2>📍 100% FREE Delivery & Venue Setup Across All Hyderabad</h2>
+      <p>Complimentary doorstep delivery and venue setup across every neighborhood and function hall in Hyderabad:</p>
+    </div>
+    <div class="zones-wrap">
+      <span class="zone-pill">✓ Toli Chowki (FREE)</span>
+      <span class="zone-pill">✓ Paramount Colony & Hakimpet (FREE)</span>
+      <span class="zone-pill">✓ Shaikpet & 7 Tombs Road (FREE)</span>
+      <span class="zone-pill">✓ Banjara Hills & Jubilee Hills (FREE)</span>
+      <span class="zone-pill">✓ Mehdipatnam & Masab Tank (FREE)</span>
+      <span class="zone-pill">✓ Gachibowli & HITEC City (FREE)</span>
+      <span class="zone-pill">✓ Madhapur & Kondapur (FREE)</span>
+      <span class="zone-pill">✓ Attapur & Rajendranagar (FREE)</span>
+      <span class="zone-pill">✓ Charminar & Old City (FREE)</span>
+      <span class="zone-pill">✓ Secunderabad & Begumpet (FREE)</span>
+    </div>
+  </section>
+
+  <footer>
+    <h3>Gulzar-e-Hyderabad Florists & Decor</h3>
+    <p>Main Road, Toli Chowki, Hyderabad, Telangana, India • Serving Local & Global NRI Families 24/7</p>
+    <p>International WhatsApp & Call: <strong>+91 8712229700</strong> | Email Quotes: <strong>qmohiuddin13@hotmail.com</strong></p>
+  </footer>
+
+  <a class="floating-wa" href="https://wa.me/918712229700?text=Assalamu%20Alaikum!%20I%20want%20to%20place%20a%20flower%20or%20decor%20order%20for%20delivery%20in%20Hyderabad." target="_blank">
+    💬 WhatsApp Us
+  </a>
+
+  <!-- Cart & WhatsApp Checkout Modal -->
+  <div class="modal-backdrop" id="cartModal">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeModal('cartModal')">&times;</button>
+      <h3>🛒 Your Flower & Decor Order</h3>
+      <p class="modal-sub">100% FREE delivery anywhere in Hyderabad. Sends directly via WhatsApp to <strong>+91 8712229700</strong>.</p>
+
+      <div id="cartItemsList"></div>
+
+      <div class="cart-summary">
+        <div><span>Items Subtotal:</span> <strong id="subtotalDisplay">₹0</strong></div>
+        <div><span>Hyderabad Delivery Charge:</span> <strong style="color:#1b5e20;">FREE (₹0)</strong></div>
+        <div class="cart-total"><span>Total Payable:</span> <span id="totalDisplay">₹0</span></div>
+      </div>
+
+      <form onsubmit="submitWhatsAppOrder(event)">
+        <div class="form-group">
+          <label>Where are you ordering from? *</label>
+          <select id="ordOrigin" onchange="toggleNriFields()" required>
+            <option value="Inside India">Inside India</option>
+            <option value="Outside India (International / NRI)">Outside India (USA, UK, UAE, Saudi, Canada, etc.)</option>
+          </select>
+        </div>
+
+        <div id="nriFields" class="nri-box" style="display:none;">
+          <div class="form-row">
+            <div class="form-group" style="margin-bottom:0;">
+              <label>Your Country *</label>
+              <input type="text" id="ordCountry" placeholder="e.g. USA, UAE, UK, Saudi Arabia" />
+            </div>
+            <div class="form-group" style="margin-bottom:0;">
+              <label>Recipient Phone in Hyderabad *</label>
+              <input type="tel" id="ordRecipientPhone" placeholder="Hyderabad receiver's number" />
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Your Name (Sender) *</label>
+            <input type="text" id="ordName" required placeholder="Enter your full name" />
+          </div>
+          <div class="form-group">
+            <label>Your WhatsApp Number *</label>
+            <input type="tel" id="ordPhone" required placeholder="Include country code if abroad" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Event / Occasion *</label>
+            <select id="ordEvent" required>
+              <option value="Marriage / Nikah">Marriage / Nikah</option>
+              <option value="Sanchak">Sanchak</option>
+              <option value="Manja / Haldi">Manja / Haldi</option>
+              <option value="Walima">Walima</option>
+              <option value="Bridal Flower Headwear">Bridal Flower Headwear</option>
+              <option value="NRI Family Gift / Surprise">NRI Family Gift / Surprise</option>
+              <option value="Birthday / Bouquet">Birthday / Simple Bouquet</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Hyderabad Area / Colony *</label>
+            <input type="text" id="ordArea" required placeholder="e.g. Toli Chowki, Banjara Hills" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Full Hyderabad Delivery Address / Function Hall *</label>
+          <input type="text" id="ordAddress" required placeholder="House/Flat No, Landmark, or Function Hall Name" />
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Delivery / Event Date *</label>
+            <input type="date" id="ordDate" required />
+          </div>
+          <div class="form-group">
+            <label>Delivery Time (IST) *</label>
+            <input type="time" id="ordTime" required />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Gift Card Message (Optional)</label>
+          <input type="text" id="ordGiftNote" placeholder="Write a personal note to attach with the flowers..." />
+        </div>
+
+        <button type="submit" class="btn btn-whatsapp" style="width:100%; justify-content:center; padding:13px; font-size:1rem;">
+          📲 Send Order on WhatsApp (+91 8712229700)
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Custom Quote Email Modal -->
+  <div class="modal-backdrop" id="quoteModal">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeModal('quoteModal')">&times;</button>
+      <h3>📋 Request Custom Event Quote</h3>
+      <p class="modal-sub">Sends directly to <strong>qmohiuddin13@hotmail.com</strong> (Available for Local & International NRI bookings).</p>
+
+      <form onsubmit="submitEmailQuote(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Your Name *</label>
+            <input type="text" id="qName" required placeholder="Enter full name" />
+          </div>
+          <div class="form-group">
+            <label>WhatsApp / Phone (with Country Code) *</label>
+            <input type="tel" id="qPhone" required placeholder="e.g. +1 555... or +91 987..." />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Ordering From *</label>
+            <select id="qOrigin" required>
+              <option value="Inside India">Inside India</option>
+              <option value="Outside India (NRI)">Outside India (NRI)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Event Type *</label>
+            <select id="qEvent" required>
+              <option value="Full Marriage Package">Full Marriage Package</option>
+              <option value="Sanchak & Manja Decor">Sanchak & Manja Decor</option>
+              <option value="Walima Stage Decor">Walima Stage Decor</option>
+              <option value="Bridal Headwear & Garlands">Bridal Headwear & Garlands</option>
+              <option value="Wedding Car & Bed Decor">Wedding Car & Bed Decor</option>
+              <option value="Birthday / Gift Hamper">Birthday / Gift Hamper</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Event Date *</label>
+            <input type="date" id="qDate" required />
+          </div>
+          <div class="form-group">
+            <label>Hyderabad Location / Hall *</label>
+            <input type="text" id="qLocation" required placeholder="e.g. Toli Chowki / Function Hall" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Decoration Details / Estimated Budget</label>
+          <textarea id="qDetails" rows="3" placeholder="Describe flowers, stage theme, number of garlands, or budget..."></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center; padding:13px; font-size:1rem;">
+          ✉️ Send Quote Request to Email
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const products = [
+      {
+        id: 1,
+        category: 'garlands',
+        tag: 'Garlands & Varmalas',
+        title: 'Royal Rose & Jasmine Varmala Pair',
+        desc: 'Thick hand-woven red rose petals and fresh Mogra jasmine wedding garlands for Nikah & Walima.',
+        price: 1800,
+        unit: 'per pair • Free Delivery',
+        img: 'https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=800&q=80'
+      },
+      {
+        id: 2,
+        category: 'garlands',
+        tag: 'Garlands & Varmalas',
+        title: 'Sanchak & Manja Marigold Haar',
+        desc: 'Vibrant yellow and orange Genda garlands blended with fresh mango leaves and jasmine buds.',
+        price: 650,
+        unit: 'per pair • Free Delivery',
+        img: 'https://images.unsplash.com/photo-1605296867304-46d5465a13f1?auto=format&fit=crop&w=800&q=80'
+      },
+      {
+        id: 3,
+        category: 'bouquets',
+        tag: 'Fresh Bouquets',
+        title: 'Luxury Velvet Red Rose Bouquet',
+        desc: '24 long-stemmed farm-fresh crimson roses wrapped in premium gold-trimmed paper with gift card.',
+        price: 850,
+        unit: 'each • Free Delivery',
+        img: 'https://images.unsplash.com/photo-1561181286-d3fee7d55364?auto=format&fit=crop&w=800&q=80'
+      },
+      {
+        id: 4,
+        category: 'bouquets',
+        tag: 'Fresh Bouquets',
+        title: 'Pastel Orchid & Lily Celebration Bouquet',
+        desc: 'Exotic purple orchids, white lilies, and baby’s breath arranged for NRI family gifting & anniversaries.',
+        price: 1200,
+        unit: 'each • Free Delivery',
+        img: 'https://images.unsplash.com/photo-1526047932273-341f2a7631f9?auto=format&fit=crop&w=800&q=80'
+      },
+      {
+        id: 5,
+        category: 'headwear',
+        tag: 'Flower Headwear',
+        title: 'Bridal Mogra & Rose Bun Gajra Set',
+        desc: 'Fragrant fresh jasmine veni intertwined with miniature red roses for traditional bridal hairstyles.',
+        price: 450,
+        unit: 'per set • Free Delivery',
+        img: 'https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=800&q=80'
+      },
+      {
+        id: 6,
+        category: 'headwear',
+        tag: 'Flower Headwear',
+        title: 'Manja & Haldi Floral Tiara Crown',
+        desc: 'Lightweight handcrafted floral headpiece with baby’s breath, yellow roses, and matching hathphool.',
+        price: 750,
+        unit: 'full set • Free Delivery',
+        img: 'https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?auto=format&fit=crop&w=800&q=80'
+      },
+      {
+        id: 7,
+        category: 'decor',
+        tag: 'Stage & Event Decor',
+        title: 'Royal Walima & Nikah Floral Stage',
+        desc: 'Grand fresh flower backdrop with cascading orchids, roses, chandelier drapes, and sofa styling.',
+        price: 18500,
+        unit: 'starting • Free Setup',
+        img: 'https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=800&q=80'
+      },
+      {
+        id: 8,
+        category: 'decor',
+        tag: 'Stage & Event Decor',
+        title: 'VIP Wedding Car & Bridal Bed Decor',
+        desc: 'Complete fresh rose and orchid bonnet arrangement plus romantic bridal room floral canopy.',
+        price: 4500,
+        unit: 'package • Free Setup',
+        img: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=800&q=80'
+      }
+    ];
+
+    let cart = [];
+
+    function renderProducts(filter = 'all') {
+      const grid = document.getElementById('productGrid');
+      const filtered = filter === 'all' ? products : products.filter(p => p.category === filter);
+      grid.innerHTML = filtered.map(item => `
+        <div class="product-card">
+          <div class="product-img-wrap">
+            <span class="category-tag">${item.tag}</span>
+            <img src="${item.img}" alt="${item.title}" loading="lazy">
+          </div>
+          <div class="product-body">
+            <h3>${item.title}</h3>
+            <p>${item.desc}</p>
+            <div class="product-footer">
+              <div class="price">₹${item.price.toLocaleString()} <small>${item.unit}</small></div>
+              <button class="btn btn-primary" onclick="addToCart(${item.id})">+ Add</button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function filterProducts(category, btn) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderProducts(category);
+    }
+
+    function openNriOrder() {
+      document.getElementById('ordOrigin').value = 'Outside India (International / NRI)';
+      toggleNriFields();
+      openModal('cartModal');
+    }
+
+    function toggleNriFields() {
+      const isNri = document.getElementById('ordOrigin').value.includes('Outside India');
+      document.getElementById('nriFields').style.display = isNri ? 'block' : 'none';
+      document.getElementById('ordCountry').required = isNri;
+      document.getElementById('ordRecipientPhone').required = isNri;
+    }
+
+    function addToCart(id) {
+      const product = products.find(p => p.id === id);
+      const existing = cart.find(c => c.id === id);
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        cart.push({ ...product, qty: 1 });
+      }
+      updateCartUI();
+      openModal('cartModal');
+    }
+
+    function changeQty(id, delta) {
+      const index = cart.findIndex(c => c.id === id);
+      if (index > -1) {
+        cart[index].qty += delta;
+        if (cart[index].qty <= 0) cart.splice(index, 1);
+      }
+      updateCartUI();
+    }
+
+    function updateCartUI() {
+      const count = cart.reduce((sum, item) => sum + item.qty, 0);
+      document.getElementById('cartCount').innerText = count;
+
+      const list = document.getElementById('cartItemsList');
+      if (cart.length === 0) {
+        list.innerHTML = '<p style="text-align:center; color:#777; padding:12px 0;">Your cart is empty. Add flowers or decor items first.</p>';
+      } else {
+        list.innerHTML = cart.map(item => `
+          <div class="cart-item">
+            <div>
+              <strong>${item.title}</strong><br>
+              <small>₹${item.price} × ${item.qty}</small>
+            </div>
+            <div style="display:flex; align-items:center; gap:8px;">
+              <button type="button" class="tab-btn" style="padding:2px 9px;" onclick="changeQty(${item.id}, -1)">-</button>
+              <span>${item.qty}</span>
+              <button type="button" class="tab-btn" style="padding:2px 9px;" onclick="changeQty(${item.id}, 1)">+</button>
+            </div>
+          </div>
+        `).join('');
+      }
+
+      const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+      document.getElementById('subtotalDisplay').innerText = `₹${subtotal.toLocaleString()}`;
+      document.getElementById('totalDisplay').innerText = `₹${subtotal.toLocaleString()}`;
+    }
+
+    // Send Cart Order via WhatsApp to +91 8712229700
+    function submitWhatsAppOrder(e) {
+      e.preventDefault();
+      if (cart.length === 0) {
+        alert('Please add at least one flower or decor item to your cart.');
+        return;
+      }
+
+      const origin = document.getElementById('ordOrigin').value;
+      const country = document.getElementById('ordCountry').value.trim();
+      const recPhone = document.getElementById('ordRecipientPhone').value.trim();
+      const name = document.getElementById('ordName').value.trim();
+      const phone = document.getElementById('ordPhone').value.trim();
+      const eventType = document.getElementById('ordEvent').value;
+      const area = document.getElementById('ordArea').value.trim();
+      const address = document.getElementById('ordAddress').value.trim();
+      const date = document.getElementById('ordDate').value;
+      const time = document.getElementById('ordTime').value;
+      const giftNote = document.getElementById('ordGiftNote').value.trim();
+
+      const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+      const itemsText = cart.map(i => `• ${i.title} (x${i.qty}) = ₹${(i.price * i.qty).toLocaleString()}`).join('\n');
+
+      let nriSection = '';
+      if (origin.includes('Outside India')) {
+        nriSection = `*Ordering Country:* ${country}\n*Recipient Phone (Hyd):* ${recPhone}\n`;
+      }
+
+      const message = `*New Flower & Decor Order - Gulzar-e-Hyderabad*\n\n` +
+        `*Order Type:* ${origin}\n` +
+        `*Sender Name:* ${name}\n` +
+        `*Sender WhatsApp:* ${phone}\n` +
+        nriSection +
+        `*Occasion:* ${eventType}\n` +
+        `*Hyderabad Area:* ${area}\n` +
+        `*Full Delivery Address:* ${address}\n` +
+        `*Date & Time (IST):* ${date} at ${time}\n` +
+        (giftNote ? `*Gift Card Message:* "${giftNote}"\n` : '') +
+        `\n*Order Items:*\n${itemsText}\n\n` +
+        `*Items Subtotal:* ₹${subtotal.toLocaleString()}\n` +
+        `*Hyderabad Delivery:* FREE (₹0)\n` +
+        `*Total Payable:* ₹${subtotal.toLocaleString()}`;
+
+      const whatsappUrl = `https://wa.me/918712229700?text=${encodeURIComponent(message)}`;
+      window.open(whatsappUrl, '_blank');
+    }
+
+    // Send Quote Request via Email to qmohiuddin13@hotmail.com
+    function submitEmailQuote(e) {
+      e.preventDefault();
+      const name = document.getElementById('qName').value.trim();
+      const phone = document.getElementById('qPhone').value.trim();
+      const origin = document.getElementById('qOrigin').value;
+      const eventType = document.getElementById('qEvent').value;
+      const date = document.getElementById('qDate').value;
+      const location = document.getElementById('qLocation').value.trim();
+      const details = document.getElementById('qDetails').value.trim();
+
+      const subject = `Custom Event Quote (${origin}): ${eventType} - ${name}`;
+      const body = `Assalamu Alaikum Gulzar-e-Hyderabad,\n\n` +
+        `I would like to request a custom decoration & flower quote:\n\n` +
+        `Name: ${name}\n` +
+        `Ordering From: ${origin}\n` +
+        `WhatsApp / Phone: ${phone}\n` +
+        `Event Type: ${eventType}\n` +
+        `Event Date: ${date}\n` +
+        `Hyderabad Location / Function Hall: ${location}\n` +
+        `Decoration Details / Budget: ${details || 'Not specified'}\n\n` +
+        `Please share package pricing and payment details.`;
+
+      const mailtoUrl = `mailto:qmohiuddin13@hotmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      window.location.href = mailtoUrl;
+      closeModal('quoteModal');
+    }
+
+    function openModal(id) {
+      document.getElementById(id).classList.add('open');
+      if (id === 'cartModal') updateCartUI();
+    }
+
+    function closeModal(id) {
+      document.getElementById(id).classList.remove('open');
+    }
+
+    // Initialize
+    renderProducts();
+    updateCartUI();
+  </script>
+</body>
+</html>
